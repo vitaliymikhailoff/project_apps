@@ -1,0 +1,7 @@
+name: rabbithost
+version: 1.0.0
+description: Rabbit
+maintainers:
+  - name: Vitaliy Mikhailov
+    email: vitaliy@mail.com
+appVersion: 1.0

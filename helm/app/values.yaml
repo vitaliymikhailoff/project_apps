@@ -1,0 +1,31 @@
+crawler:
+  image:
+    repository: vitaliymikhailoff/project_crawler
+    tag: "$CI_PIPELINE_ID"
+  service:
+    internalPort: 8000
+    externalPort: 8000
+
+ui:
+  image:
+    repository: vitaliymikhailoff/project_ui
+    tag: "$CI_PIPELINE_ID"
+  service:
+    internalPort: 8000
+    externalPort: 8000
+
+rabbitmq:
+  image:
+    repository: vitaliymikhailoff/project_rabbit
+    tag: "1.0"
+  service:
+    internalPort: 5672
+    externalPort: 5672
+
+mongo:
+  image:
+    repository: mongo
+    tag: "3.2"
+  service:
+    internalPort: 27017
+    externalPort: 27017

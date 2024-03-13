@@ -18,11 +18,15 @@ test_unit_job:
     - docker compose up -d
     - sleep 20
     - docker ps
-
+    - docker compose down -v
+    
 deploy_job:
   stage: deploy
   script:
-    - echo $CI_PIPELINE_ID
+    - cd helm/app
+    - helm dep update
+    - cd ..
+    - helm install app helm/app -n project
 
 
 

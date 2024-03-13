@@ -1,0 +1,28 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rabbithost
+  labels:
+    app: project
+    component: rabbithost
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: project
+      component: rabbithost
+  template:
+    metadata:
+      name: rabbithost
+      labels:
+        app: project
+        component: rabbithost
+    spec:
+      containers:
+        - image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
+          name: rabbithost
+          ports:
+          - containerPort: {{ .Values.service.internalPort }}
+            name: rabbithost
+            protocol: TCP

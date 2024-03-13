@@ -1,0 +1,7 @@
+name: ui
+version: 1.0.0
+description: UI app
+maintainers:
+  - name: Vitaliy Mikhailov
+    email: vitaliy@mail.com
+appVersion: 1.0
