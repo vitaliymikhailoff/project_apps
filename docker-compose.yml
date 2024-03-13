@@ -1,0 +1,36 @@
+version: '3.3'
+services:
+  mongohost:
+    image: mongo:3.2
+    networks:
+      project_net:
+        aliases:
+          - mongohost
+  ui:
+    image: vitaliymikhailoff/project_ui:2.0
+    ports:
+      - 8000/tcp
+    networks:
+      project_net:
+        aliases:
+          - ui
+
+  rabbithost:
+    image: vitaliymikhailoff/project_rabbit:2.0
+    networks:
+      project_net:
+        aliases:
+          - rabbithost
+
+  crawler:
+    image: vitaliymikhailoff/project_crawler:2.0
+    networks:
+      project_net:
+        aliases:
+          - crawler
+
+
+networks:
+  project_net:
+
+

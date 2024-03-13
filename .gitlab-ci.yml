@@ -1,0 +1,25 @@
+stages:
+  - build
+  - test
+  - deploy
+
+build_job:
+  stage: build
+  script:
+    - docker build -t vitaliymikhailoff/project_ui:2.0 ui/
+    - docker build -t vitaliymikhailoff/project_crawler:2.0 crawler/
+
+test_unit_job:
+  stage: test
+  script:
+    - docker compose up -d
+    - sleep 20
+    - docker ps
+
+deploy_job:
+  stage: deploy
+  script:
+    - echo $CI_JOB_ID
+
+
+
