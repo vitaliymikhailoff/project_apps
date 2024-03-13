@@ -22,7 +22,7 @@ test_unit_job:
 deploy_job:
   stage: deploy
   script:
-    - echo $CI_JOB_ID
+    - echo '$CI_JOB_ID'
 
 
 
