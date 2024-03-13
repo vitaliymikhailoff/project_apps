@@ -7,7 +7,7 @@ services:
         aliases:
           - mongohost
   ui:
-    image: vitaliymikhailoff/project_ui:$CI_JOB_ID
+    image: vitaliymikhailoff/project_ui:$CI_PIPELINE_ID
     ports:
       - 8000/tcp
     networks:
@@ -23,7 +23,7 @@ services:
           - rabbithost
 
   crawler:
-    image: vitaliymikhailoff/project_crawler:$CI_JOB_ID
+    image: vitaliymikhailoff/project_crawler:$CI_PIPELINE_ID
     networks:
       project_net:
         aliases:

@@ -6,11 +6,11 @@ stages:
 build_job:
   stage: build
   script:
-    - docker build -t vitaliymikhailoff/project_ui:$CI_JOB_ID ui/
-    - docker build -t vitaliymikhailoff/project_crawler:$CI_JOB_ID crawler/
+    - docker build -t vitaliymikhailoff/project_ui:$CI_PIPELINE_ID ui/
+    - docker build -t vitaliymikhailoff/project_crawler:$CI_PIPELINE_ID crawler/
     - docker login -u $DOCKER_LOGIN -p $DOCKER_PASSWORD
-    - docker push vitaliymikhailoff/project_ui:$CI_JOB_ID
-    - docker push vitaliymikhailoff/project_crawler:$CI_JOB_ID
+    - docker push vitaliymikhailoff/project_ui:$CI_PIPELINE_ID
+    - docker push vitaliymikhailoff/project_crawler:$CI_PIPELINE_ID
 
 test_unit_job:
   stage: test
@@ -22,7 +22,7 @@ test_unit_job:
 deploy_job:
   stage: deploy
   script:
-    - echo $CI_JOB_ID
+    - echo $CI_PIPELINE_ID
 
 
 
