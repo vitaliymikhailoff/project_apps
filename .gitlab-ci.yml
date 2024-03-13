@@ -6,9 +6,11 @@ stages:
 build_job:
   stage: build
   script:
-    - docker info
     - docker build -t vitaliymikhailoff/project_ui:2.0 ui/
     - docker build -t vitaliymikhailoff/project_crawler:2.0 crawler/
+    - docker login -u $DOCKER_LOGIN -p $DOCKER_PASSWORD
+    - docker push vitaliymikhailoff/project_ui:2.0
+    - docker push vitaliymikhailoff/project_crawler:2.0 
 
 test_unit_job:
   stage: test
