@@ -16,7 +16,7 @@ services:
           - ui
 
   rabbithost:
-    image: vitaliymikhailoff/project_rabbit:2.0
+    image: vitaliymikhailoff/project_rabbit:1.0
     networks:
       project_net:
         aliases:
