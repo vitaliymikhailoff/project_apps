@@ -6,16 +6,16 @@ stages:
 build_job:
   stage: build
   script:
-    - sudo docker ps
-    - sudo docker build -t vitaliymikhailoff/project_ui:2.0 ui/
-    - sudo docker build -t vitaliymikhailoff/project_crawler:2.0 crawler/
+    - docker info
+    - docker build -t vitaliymikhailoff/project_ui:2.0 ui/
+    - docker build -t vitaliymikhailoff/project_crawler:2.0 crawler/
 
 test_unit_job:
   stage: test
   script:
-    - sudo docker compose up -d
-    - sudo sleep 20
-    - sudo docker ps
+    - docker compose up -d
+    - sleep 20
+    - docker ps
 
 deploy_job:
   stage: deploy
