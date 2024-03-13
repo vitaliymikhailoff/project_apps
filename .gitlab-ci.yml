@@ -6,6 +6,7 @@ stages:
 build_job:
   stage: build
   script:
+    - hostname && ip a && cat /etc/os-release
     - docker build -t vitaliymikhailoff/project_ui:$CI_PIPELINE_ID ui/
     - docker build -t vitaliymikhailoff/project_crawler:$CI_PIPELINE_ID crawler/
     - docker login -u $DOCKER_LOGIN -p $DOCKER_PASSWORD
