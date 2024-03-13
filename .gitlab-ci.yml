@@ -5,8 +5,6 @@ stages:
 
 build_job:
   stage: build
-  services: 
-    - name: docker:latest
   script:
     - docker ps
     - docker build -t vitaliymikhailoff/project_ui:2.0 ui/
@@ -14,8 +12,6 @@ build_job:
 
 test_unit_job:
   stage: test
-  services: 
-    - name: docker:latest
   script:
     - docker compose up -d
     - sleep 20
