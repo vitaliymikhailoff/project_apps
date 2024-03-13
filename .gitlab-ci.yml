@@ -6,6 +6,7 @@ stages:
 build_job:
   stage: build
   script:
+    - docker ps
     - docker build -t vitaliymikhailoff/project_ui:2.0 ui/
     - docker build -t vitaliymikhailoff/project_crawler:2.0 crawler/
 
