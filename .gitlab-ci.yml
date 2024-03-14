@@ -27,7 +27,7 @@ deploy_job:
      - cp $SSH_KEY /tmp/yc_key
      - chmod 0600 /tmp/yc_key
      - cat /tmp/yc_key
-     - scp -r helm -i /tmp/yc_key ubuntu@158.160.97.194:/tmp/
+     - ssh -i /tmp/yc_key ubuntu@158.160.97.194 -o StrictHostKeyChecking=no "cat /etc/os-release"
    # - curl -LO https://storage.googleapis.com/kubernetes-release/release/v1.25.16/bin/linux/amd64/kubectl
    # - chmod +x ./kubectl
    # - mv ./kubectl /usr/local/bin/kubectl
