@@ -31,7 +31,8 @@ deploy_job:
     - mv linux-amd64/helm /usr/local/bin/helm
     - mkdir ~/.kube
     - cp $K8S_CONFIG ~/.kube/config
-    - sed -i 's/TAG/$CI_PIPELINE_ID/g' helm/app/values.yaml
+    - sed -i 's/TAG/'$CI_PIPELINE_ID'/g' helm/app/values.yaml
+    - cat helm/app/values.yaml
     - cd helm/app
     - helm dep update
     - cd ..
