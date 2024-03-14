@@ -27,8 +27,10 @@ deploy_job:
     - apk --no-cache add curl
     - apk --no-cache add tar
     - curl -O https://get.helm.sh/helm-v3.14.3-linux-amd64.tar.gz
-    - tar -zxvf helm-v3.0.0-linux-amd64.tar.gz
+    - tar -zxvf helm-v3.14.3-linux-amd64.tar.gz
     - ls -la linux-amd64
+    - mv linux-amd64/helm /usr/local/bin/helm
+    - helm list
    # - curl -LO https://storage.googleapis.com/kubernetes-release/release/v1.25.16/bin/linux/amd64/kubectl
    # - chmod +x ./kubectl
    # - mv ./kubectl /usr/local/bin/kubectl
