@@ -13,9 +13,9 @@ build_job:
     #- docker push vitaliymikhailoff/project_ui:$CI_PIPELINE_ID
     #- docker push vitaliymikhailoff/project_crawler:$CI_PIPELINE_ID
 
-test_unit_job:
-  stage: test
-  script:
+#test_unit_job:
+  #stage: test
+  #script:
     #- docker compose up -d
     #- sleep 20
     #- docker ps
