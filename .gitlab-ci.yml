@@ -24,11 +24,12 @@ test_unit_job:
 deploy_job:
   stage: deploy
   script:
-    - curl -LO https://storage.googleapis.com/kubernetes-release/release/v1.25.16/bin/linux/amd64/kubectl
-    - chmod +x ./kubectl
-    - mv ./kubectl /usr/local/bin/kubectl
-    - cp $K8S_CONFIG ~/.kube/config
-    - kubectl get no
+     - scp -i $SSH_KEY -r helm/ ubuntu@158.160.97.194:/tmp/
+   # - curl -LO https://storage.googleapis.com/kubernetes-release/release/v1.25.16/bin/linux/amd64/kubectl
+   # - chmod +x ./kubectl
+   # - mv ./kubectl /usr/local/bin/kubectl
+   # - cp $K8S_CONFIG ~/.kube/config
+   # - kubectl get no
    # - helm dep update
    # - cd ..
    # - helm install app helm/app -n project
