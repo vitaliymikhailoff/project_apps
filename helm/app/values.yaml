@@ -1,7 +1,7 @@
 crawler:
   image:
     repository: vitaliymikhailoff/project_crawler
-    tag: "$CI_PIPELINE_ID"
+    tag: "TAG"
   service:
     internalPort: 8000
     externalPort: 8000
@@ -9,7 +9,7 @@ crawler:
 ui:
   image:
     repository: vitaliymikhailoff/project_ui
-    tag: "$CI_PIPELINE_ID"
+    tag: "TAG"
   service:
     internalPort: 8000
     externalPort: 8000
