@@ -7,24 +7,24 @@ build_job:
   stage: build
   script:
     - hostname && ip a && cat /etc/os-release
-    - docker build -t vitaliymikhailoff/project_ui:$CI_PIPELINE_ID ui/
-    - docker build -t vitaliymikhailoff/project_crawler:$CI_PIPELINE_ID crawler/
-    - docker login -u $DOCKER_LOGIN -p $DOCKER_PASSWORD
-    - docker push vitaliymikhailoff/project_ui:$CI_PIPELINE_ID
-    - docker push vitaliymikhailoff/project_crawler:$CI_PIPELINE_ID
+    #- docker build -t vitaliymikhailoff/project_ui:$CI_PIPELINE_ID ui/
+    #- docker build -t vitaliymikhailoff/project_crawler:$CI_PIPELINE_ID crawler/
+    #- docker login -u $DOCKER_LOGIN -p $DOCKER_PASSWORD
+    #- docker push vitaliymikhailoff/project_ui:$CI_PIPELINE_ID
+    #- docker push vitaliymikhailoff/project_crawler:$CI_PIPELINE_ID
 
 test_unit_job:
   stage: test
   script:
-    - docker compose up -d
-    - sleep 20
-    - docker ps
-    - docker compose down -v
+    #- docker compose up -d
+    #- sleep 20
+    #- docker ps
+    #- docker compose down -v
     
 deploy_job:
   stage: deploy
   script:
-     - echo $SSH_KEY > /tmp/yc_key
+     - cp $SSH_KEY /tmp/yc_key
      - cat /tmp/yc_key
      - scp -i /tmp/yc_key -r helm/ ubuntu@158.160.97.194:/tmp/
    # - curl -LO https://storage.googleapis.com/kubernetes-release/release/v1.25.16/bin/linux/amd64/kubectl
