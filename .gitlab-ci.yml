@@ -24,10 +24,11 @@ build_job:
 deploy_job:
   stage: deploy
   script:
-     - cp $SSH_KEY /tmp/yc_key
-     - chmod 0400 /tmp/yc_key
-     - cat /tmp/yc_key
-     - ssh -i /tmp/yc_key ubuntu@158.160.97.194 -o StrictHostKeyChecking=no "cat /etc/os-release"
+    - apk --no-cache add curl
+    - apk --no-cache add tar
+    - curl -O https://get.helm.sh/helm-v3.14.3-linux-amd64.tar.gz
+    - tar -zxvf helm-v3.0.0-linux-amd64.tar.gz
+    - ls -la linux-amd64
    # - curl -LO https://storage.googleapis.com/kubernetes-release/release/v1.25.16/bin/linux/amd64/kubectl
    # - chmod +x ./kubectl
    # - mv ./kubectl /usr/local/bin/kubectl
