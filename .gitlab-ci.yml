@@ -24,7 +24,8 @@ test_unit_job:
 deploy_job:
   stage: deploy
   script:
-     - scp -i $SSH_KEY -r helm/ ubuntu@158.160.97.194:/tmp/
+     - echo $SSH_KEY > /tmp/yc_key
+     - scp -i /tmp/yc_key -r helm/ ubuntu@158.160.97.194:/tmp/
    # - curl -LO https://storage.googleapis.com/kubernetes-release/release/v1.25.16/bin/linux/amd64/kubectl
    # - chmod +x ./kubectl
    # - mv ./kubectl /usr/local/bin/kubectl
