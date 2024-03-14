@@ -7,19 +7,19 @@ build_job:
   stage: build
   script:
     - hostname && ip a && cat /etc/os-release
-    #- docker build -t vitaliymikhailoff/project_ui:$CI_PIPELINE_ID ui/
-    #- docker build -t vitaliymikhailoff/project_crawler:$CI_PIPELINE_ID crawler/
-    #- docker login -u $DOCKER_LOGIN -p $DOCKER_PASSWORD
-    #- docker push vitaliymikhailoff/project_ui:$CI_PIPELINE_ID
-    #- docker push vitaliymikhailoff/project_crawler:$CI_PIPELINE_ID
+    - docker build -t vitaliymikhailoff/project_ui:$CI_PIPELINE_ID ui/
+    - docker build -t vitaliymikhailoff/project_crawler:$CI_PIPELINE_ID crawler/
+    - docker login -u $DOCKER_LOGIN -p $DOCKER_PASSWORD
+    - docker push vitaliymikhailoff/project_ui:$CI_PIPELINE_ID
+    - docker push vitaliymikhailoff/project_crawler:$CI_PIPELINE_ID
 
-#test_unit_job:
-  #stage: test
-  #script:
-    #- docker compose up -d
-    #- sleep 20
-    #- docker ps
-    #- docker compose down -v
+test_job:
+  stage: test
+  script:
+    - docker compose up -d
+    - sleep 20
+    - docker ps
+    - docker compose down -v
     
 deploy_job:
   stage: deploy
@@ -33,14 +33,10 @@ deploy_job:
     - mkdir ~/.kube
     - cp $K8S_CONFIG ~/.kube/config
     - helm list
-   # - curl -LO https://storage.googleapis.com/kubernetes-release/release/v1.25.16/bin/linux/amd64/kubectl
-   # - chmod +x ./kubectl
-   # - mv ./kubectl /usr/local/bin/kubectl
-   # - cp $K8S_CONFIG ~/.kube/config
-   # - kubectl get no
-   # - helm dep update
-   # - cd ..
-   # - helm install app helm/app -n project
+    - cd helm/app
+    - helm dep update
+    - cd ..
+    - helm install app helm/app -n project
 
 
 
