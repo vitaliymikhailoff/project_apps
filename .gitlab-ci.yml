@@ -36,7 +36,7 @@ deploy_job:
     - cd helm/app
     - helm dep update
     - cd ..
-    - helm install app helm/app -n project
+    - helm install app app -n project
 
 
 
