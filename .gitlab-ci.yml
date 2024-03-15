@@ -17,6 +17,8 @@ test_job:
   script:
     - docker compose up -d
     - sleep 20
+    - docker exec -it project-crawler-1 python -m unittest discover -s tests/
+    - docker exec -it project-ui-1 python -m unittest discover -s tests/
     - docker ps
     - docker compose down -v
     

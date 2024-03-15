@@ -12,6 +12,6 @@ ENV CHECK_INTERVAL 60
 ENV EXCLUDE_URLS '.*github.com'
 ENV URL 'https://vitkhab.github.io/search_engine_test_site/'
 
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt -r requirements-test.txt
 EXPOSE 8000
 ENTRYPOINT ["/bin/sh", "entrypoint.sh"]
