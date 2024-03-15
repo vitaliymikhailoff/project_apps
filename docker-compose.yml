@@ -8,6 +8,8 @@ services:
           - mongohost
   ui:
     image: vitaliymikhailoff/project_ui:$CI_PIPELINE_ID
+    tty: true
+    stdin_open: true
     ports:
       - 8000/tcp
     networks:
@@ -24,6 +26,8 @@ services:
 
   crawler:
     image: vitaliymikhailoff/project_crawler:$CI_PIPELINE_ID
+    tty: true
+    stdin_open: true
     networks:
       project_net:
         aliases:
