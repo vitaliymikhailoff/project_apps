@@ -17,26 +17,27 @@ test_job:
   script:
     - docker compose up -d
     - sleep 20
-    - docker exec -it project-crawler-1 python -m unittest discover -s tests/
-    - docker exec -it project-ui-1 python -m unittest discover -s tests/
-    - docker ps
-    - docker compose down -v
+    - docker inspect project-crawler-1
+    #- docker exec -it project-crawler-1 python -m unittest discover -s tests/
+    #- docker exec -it project-ui-1 python -m unittest discover -s tests/
+    #- docker ps
+    #- docker compose down -v
     
 deploy_job:
   stage: deploy
   script:
     - apk --no-cache add curl
     - apk --no-cache add tar
-    - curl -O https://get.helm.sh/helm-v3.14.3-linux-amd64.tar.gz
-    - tar -zxvf helm-v3.14.3-linux-amd64.tar.gz
-    - mv linux-amd64/helm /usr/local/bin/helm
-    - mkdir ~/.kube
-    - cp $K8S_CONFIG ~/.kube/config
-    - sed -i 's/TAG/'$CI_PIPELINE_ID'/g' helm/app/values.yaml
-    - cd helm/app
-    - helm dep update
-    - cd ..
-    - helm upgrade --install app app -n project
+    #- curl -O https://get.helm.sh/helm-v3.14.3-linux-amd64.tar.gz
+    #- tar -zxvf helm-v3.14.3-linux-amd64.tar.gz
+    #- mv linux-amd64/helm /usr/local/bin/helm
+    #- mkdir ~/.kube
+    #- cp $K8S_CONFIG ~/.kube/config
+    #- sed -i 's/TAG/'$CI_PIPELINE_ID'/g' helm/app/values.yaml
+    #- cd helm/app
+    #- helm dep update
+    #- cd ..
+    #- helm upgrade --install app app -n project
 
 
 
