@@ -1,0 +1,13 @@
+apiVersion: deckhouse.io/v1alpha1
+kind: ClusterLoggingConfig
+metadata:
+  name: project-ns-logs
+spec:
+  type: KubernetesPods
+  kubernetesPods:
+   namespaceSelector:
+     matchNames:
+       - project
+  destinationRefs:
+  - d8-loki
+

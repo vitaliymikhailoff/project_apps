@@ -1,0 +1,21 @@
+apiVersion: deckhouse.io/v1alpha1
+kind: CustomAlertmanager
+metadata:
+  name: telegram
+spec:
+  type: Internal
+  internal:
+    receivers:
+      - name: telegram
+        telegramConfigs:
+          - botToken:
+              name: telegram-bot-secret
+              key: token
+            chatID: -65678541
+    route:
+      groupBy:
+        - job
+      groupInterval: 5m
+      groupWait: 30s
+      receiver: telegram
+      repeatInterval: 12h
